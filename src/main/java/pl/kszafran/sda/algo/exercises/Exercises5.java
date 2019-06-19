@@ -39,7 +39,6 @@ public class Exercises5 {
             return false;
         }
 
-
         do {
             if (stos.peek().equals("(")) {
                 licznikOtwarc++;
@@ -63,7 +62,43 @@ public class Exercises5 {
      * Np. dla "[(){}]" zwraca true, ale dla "[(])" zwraca false.
      */
     public boolean balancedAnyParens(String input) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        int licznikOtwarc = 0;
+        int licznikZamkniec = 0;
+        ArrayDeque<String> stos = new ArrayDeque<>();
+
+        for (int i = input.length(); i > 0; i--) {
+            String a = input.substring(i - 1, i);
+            if (a.equals("(") || a.equals(")") || a.equals("{") || a.equals("}") || a.equals("[") || a.equals("]")) {
+                stos.push(a);
+            }
+        }
+        System.out.println(stos);
+
+        if(stos.isEmpty()){
+            throw new NullPointerException("Stos jest pusty");
+        }
+
+        if (stos.peek().equals("(")) {
+            licznikOtwarc++;
+            stos.pop();
+        } else if (stos.peek().equals(")")) {
+            return false;
+        }
+
+        do {
+            if (stos.peek().equals("(")) {
+                licznikOtwarc++;
+            } else if (stos.peek().equals(")") && licznikOtwarc >= licznikZamkniec) {
+                licznikZamkniec++;
+            }
+            stos.pop();
+        } while (!stos.isEmpty());
+
+        if (licznikOtwarc == licznikZamkniec) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
