@@ -78,27 +78,28 @@ public class Exercises5 {
             throw new NullPointerException("Stos jest pusty");
         }
 
-        if (stos.peek().equals("(")) {
-            licznikOtwarc++;
-            stos.pop();
-        } else if (stos.peek().equals(")")) {
-            return false;
-        }
-
-        do {
-            if (stos.peek().equals("(")) {
-                licznikOtwarc++;
-            } else if (stos.peek().equals(")") && licznikOtwarc >= licznikZamkniec) {
-                licznikZamkniec++;
-            }
-            stos.pop();
-        } while (!stos.isEmpty());
-
-        if (licznikOtwarc == licznikZamkniec) {
-            return true;
-        } else {
-            return false;
-        }
+//        if (stos.peek().equals("(")) {
+//            licznikOtwarc++;
+//            stos.pop();
+//        } else if (stos.peek().equals(")")) {
+//            return false;
+//        }
+//
+//        do {
+//            if (stos.peek().equals("(")) {
+//                licznikOtwarc++;
+//            } else if (stos.peek().equals(")") && licznikOtwarc >= licznikZamkniec) {
+//                licznikZamkniec++;
+//            }
+//            stos.pop();
+//        } while (!stos.isEmpty());
+//
+//        if (licznikOtwarc == licznikZamkniec) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return true;
     }
 
     /**
