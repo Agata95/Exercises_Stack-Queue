@@ -19,6 +19,7 @@ public class Exercises5 {
         int licznikOtwarc = 0;
         int licznikZamkniec = 0;
         ArrayDeque<String> stos = new ArrayDeque<>();
+
         for (int i = input.length(); i > 0; i--) {
             String a = input.substring(i - 1, i);
             if (a.equals("(") || a.equals(")")) {
@@ -27,11 +28,17 @@ public class Exercises5 {
         }
         System.out.println(stos);
 
+        if(stos.isEmpty()){
+            throw new NullPointerException("Stos jest pusty");
+        }
+
         if (stos.peek().equals("(")) {
             licznikOtwarc++;
+            stos.pop();
         } else if (stos.peek().equals(")")) {
             return false;
         }
+
 
         do {
             if (stos.peek().equals("(")) {
